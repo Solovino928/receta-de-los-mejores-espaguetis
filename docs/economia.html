@@ -37,10 +37,72 @@ nav a:hover {
     background-color: #ddd;
     color: black;
 }
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #064508;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+
  </style>
 </head>
 <body>
  <h1 style="color:#F90" align="center"> LA ECONOMIA DE MI MUNICIPIO </h1>
+     <br><br><br>
+    <audio id="musica-fondo" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+<button id="btn-musica" style="display:block;margin:20px auto;">Reproducir música</button>
+     <h2 style="color: aqua;"><strong>Contador de visitas</strong></h2>
+<img src="https://hitwebcounter.com/counter/counter.php?page=20883928&style=0017&nbdigits=5&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0"/>
  <P> El municipio CD. ALEMAN esta conformado por diferentes instituciones, tiendas, negocios, etc.</P>
  <P>Son diferentes formas de ingresos que atribuyen a la economia de CD.ALEMAN y a sus ciudadanos</P>
  <br>
@@ -74,8 +136,43 @@ nav a:hover {
  <br>
  <p><img src="economia/tienda.jpg" width="635" height="475" /></p>
  <p>Tambien contamos con diversas tiendas que estan distribuidas por todo CD.ALEMAN. Esto promueve a la economia por la oferta y demanda de ciertos productos que son comprados por los ciudadanos</p>
+<br>
+<button id="mostrar-contacto" style="display:block;margin:20px auto;">Contactarme</button>
+
+<div class="form-container" id="form-contacto" style="display:none;">
+    <h2>Contáctame</h2>
+    <form action="https://formspree.io/f/mdkzeljr" method="POST">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+      <button type="submit">Enviar mensaje</button>
+    </form>
+</div>
  <nav align="center">
    <div align="center"><a href="index.html">MENU PRINCIPAL</a></div>
- </nav>
+
+<script>
+      const btnMusica = document.getElementById('btn-musica');
+  const audio = document.getElementById('musica-fondo');
+  btnMusica.onclick = function() {
+    if (audio.paused) {
+      audio.play();
+      btnMusica.textContent = 'Pausar música';
+    } else {
+      audio.pause();
+      btnMusica.textContent = 'Reproducir música';
+    }
+  };
+  document.getElementById('mostrar-contacto').onclick = function() {
+    document.getElementById('form-contacto').style.display = 'block';
+    this.style.display = 'none';
+    window.scrollTo({ top: document.getElementById('form-contacto').offsetTop, behavior: 'smooth' });
+  };
 </body>
 </html>

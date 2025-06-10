@@ -49,7 +49,7 @@
     }
 
     button:hover {
-      background-color: #45a049;
+      background-color: #064508;
     }
 
     @media (max-width: 600px) {
@@ -108,14 +108,30 @@ width: 60%
       <a href="llamativo.html">ATRACTIVO</a>
     </nav>
     <br><br><br>
+    <audio id="musica-fondo" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+<button id="btn-musica" style="display:block;margin:20px auto;">Reproducir música</button>
+     <h2 style="color: aqua;"><strong>Contador de visitas</strong></h2>
+<img src="https://hitwebcounter.com/counter/counter.php?page=20883928&style=0017&nbdigits=5&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0"/>
+<br><br>
+<br><br>
+<br><br>
     <h3><strong>Esta es la pagina inicial donde puedes elegir una de las 3 secciones que aparecen en el menu superior, puedes elegir entre </strong></h3>
     <h3><strong>la economia, historia y lugares atractivos de CD.ALEMAN.</strong></h3>
-    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><video width="480" autoplay muted>
+  <source src="video.mp4" type="video/mp4">
+  Tu navegador no soporta el elemento de video.
+</video><br><br><br><br>
     <h3><strong>Toda la informacion de las paginas fue sacada de diversas fuentes de informacion como wikipedia, facebook, lucertas, etc.</strong></h3>
 <h3><strong>Si gustas aportar algo de informacion o imagenes puedes contactarme con el formulario de abajo</strong></h3>
 <h3><strong>La finlidad de esta pagina es dar a conocer un poco de CD.ALEMAN, COSAMALOAPAN, VER.</strong><strong></strong></h3>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
   
-<div class="form-container">
+<button id="mostrar-contacto" style="display:block;margin:20px auto;">Contactarme</button>
+
+<div class="form-container" id="form-contacto" style="display:none;">
     <h2>Contáctame</h2>
     <form action="https://formspree.io/f/mdkzeljr" method="POST">
       <label for="nombre">Nombre:</label>
@@ -129,6 +145,25 @@ width: 60%
 
       <button type="submit">Enviar mensaje</button>
     </form>
-  </div>
+</div>
+
+<script>
+  const btnMusica = document.getElementById('btn-musica');
+  const audio = document.getElementById('musica-fondo');
+  btnMusica.onclick = function() {
+    if (audio.paused) {
+      audio.play();
+      btnMusica.textContent = 'Pausar música';
+    } else {
+      audio.pause();
+      btnMusica.textContent = 'Reproducir música';
+    }
+  };
+  document.getElementById('mostrar-contacto').onclick = function() {
+    document.getElementById('form-contacto').style.display = 'block';
+    this.style.display = 'none';
+    window.scrollTo({ top: document.getElementById('form-contacto').offsetTop, behavior: 'smooth' });
+  };
+</script>
 </body>
 </html>
